@@ -47,8 +47,8 @@
 
       let male = [],
         female = [];
-      let maleColor = "#1E90FF",
-  femaleColor = "#ff1e90";
+      let maleColor = 'rgb(30,144,255, 0.5)',
+        femaleColor = 'rgb(255,30,144, 0.2)';
 
       Highcharts.getJSON(
         'https://raw.githubusercontent.com/mekhatria/demo_highcharts/master/olympic2012.json?callback=?',
@@ -94,7 +94,7 @@
                 text: null
               },
               labels: {
-                format: '{value}',
+                format: '{value}m',
                 style: { fontSize: '8px' }
               },
 
@@ -108,7 +108,7 @@
                 text: null
               },
               labels: {
-                format: '{value}',
+                format: '{value}' + '<br/>kg',
                 style: { fontSize: '8px' }
               },
               startOnTick: false,
@@ -123,6 +123,8 @@
             plotOptions: {
               scatter: {
                 marker: {
+                  lineColor: 'rgb(100,100,100)',
+                  lineWidth: 0.2,
                   radius: 3,
                   symbol: 'circle',
                   states: {
@@ -142,18 +144,8 @@
               }
             },
             tooltip: {
-              formatter: function() {
-                return (
-                  '<b>' +
-                  this.series.name +
-                  '</b><br/>' +
-                  'Height: ' +
-                  this.x +
-                  'm <br/> Weight: ' +
-                  this.y +
-                  'kg'
-                );
-              }
+              pointFormat: 'Height: {point.x} m <br/> Weight: {point.y} kg',
+              outside: true
             },
 
             series: [

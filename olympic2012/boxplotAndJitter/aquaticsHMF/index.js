@@ -136,7 +136,7 @@
                 text: null
               },
               labels: {
-                format: '{value}',
+                format: '{value}' + '<br/>m',
                 style: {
                   fontSize: '8px'
                 }
@@ -171,6 +171,7 @@
               }
             },
             tooltip: {
+              outside: true,
               formatter: function() {
                 if (this.series.userOptions.type === 'scatter') {
                   return this.y + ' m';
