@@ -65,20 +65,24 @@
           Highcharts.chart('container-' + mainSport, {
             chart: {
               type: 'scatter',
-              zoomType: 'xy'
+              zoomType: 'xy',
+              height: 110 + '%'
             },
             accessibility: {
               description: ''
             },
             title: {
-              text: mainSport + ' vs other sports'
+              text: '<b>' + mainSport + '</b> vs other sports',
+              style: {
+                textTransform: 'capitalize'
+              }
             },
             xAxis: {
               title: {
                 text: null
               },
               labels: {
-                format: '{value}m'
+                format: '{value} m'
               },
               startOnTick: true,
               endOnTick: true,
@@ -89,12 +93,13 @@
                 text: null
               },
               labels: {
-                format: '{value}kg'
+                format: '{value} kg'
               }
             },
             legend: {
-              enabled: true
+              enabled: false
             },
+            credits: { enabled: false },
             plotOptions: {
               scatter: {
                 opacity: 0.5,
@@ -118,7 +123,7 @@
               }
             },
             tooltip: {
-              pointFormat: 'Height: {x} m <br/> Weight: {y} kg'
+              pointFormat: 'Height: {point.x} m <br/> Weight: {point.y} kg'
             },
             series: [
               { name: 'others', color: '#BEBEBE', data: tempOther },
